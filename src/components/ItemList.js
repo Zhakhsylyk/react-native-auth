@@ -2,14 +2,7 @@ import { View, Text, StyleSheet, ScrollView, Dimensions } from "react-native";
 import React, { useEffect, useState } from "react";
 import Item from "./Item";
 import axios from "axios";
-
-const BASE_URL = "https://jsonplaceholder.typicode.com";
-
-let endpoints = [
-  `${BASE_URL}/users`,
-  `${BASE_URL}/posts`,
-  `${BASE_URL}/photos`,
-];
+import { getContent } from "../api/api";
 
 const ItemList = () => {
   const [data, setData] = useState({
@@ -20,20 +13,15 @@ const ItemList = () => {
   let contents;
 
   useEffect(() => {
-    getContent();
+    const promise = getContent();
+    promise.then((response) => {
+      setData({
+        users: response[0].data,
+        posts: response[1].data,
+        photos: response[2].data,
+      });
+    });
   }, []);
-
-  const getContent = () => {
-    axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then(
-      axios.spread((...response) => {
-        setData({
-          users: response[0].data,
-          posts: response[1].data,
-          photos: response[2].data,
-        });
-      })
-    );
-  };
 
   if (data) {
     contents = data.posts.map((post) => ({
