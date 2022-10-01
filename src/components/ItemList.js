@@ -1,11 +1,9 @@
 import { View, Text, StyleSheet, ScrollView, Dimensions } from "react-native";
 import React, { useEffect, useState } from "react";
-import Item from "../components/Item";
+import Item from "./Item";
 import axios from "axios";
-import * as API from "../api/api";
 
 const BASE_URL = "https://jsonplaceholder.typicode.com";
-const ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 let endpoints = [
   `${BASE_URL}/users`,
@@ -48,7 +46,6 @@ const ItemList = () => {
         index === self.findIndex((item) => item.id === content.id)
     );
   }
-
   return (
     <ScrollView>
       {contents ? (
@@ -65,7 +62,7 @@ const ItemList = () => {
           ))}
         </View>
       ) : (
-        <Text>Loading...</Text>
+        <Text style={styles["loader"]}>Loading...</Text>
       )}
     </ScrollView>
   );
@@ -75,6 +72,11 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
+  },
+  loader: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 export default ItemList;

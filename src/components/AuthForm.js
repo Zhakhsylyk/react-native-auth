@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import { logIn } from "../firebase-config";
+import { logIn } from "../../firebase-config";
 import { verifyPasswordResetCode } from "firebase/auth";
 
 const AuthForm = ({ nav }) => {

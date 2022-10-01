@@ -4,10 +4,7 @@ import React from "react";
 const Item = ({ name, body, title, company, thumbnailUrl }) => {
   return (
     <ScrollView style={styles.container}>
-      <Image
-        source={{ uri: `${thumbnailUrl}` }}
-        style={{ margin: 5, width: 60, height: 60 }}
-      />
+      <Image source={{ uri: `${thumbnailUrl}` }} style={styles.image} />
       <Text>Author : {name}</Text>
       <Text>Company : {company}</Text>
       <Text>Title : {body} </Text>
@@ -24,6 +21,11 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: "#27569C",
     overflow: "scroll",
+  },
+  image: {
+    margin: 5,
+    width: 60,
+    height: 60,
   },
 });
 

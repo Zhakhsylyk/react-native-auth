@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React from "react";
-import { logOut } from "../firebase-config";
+import { logOut } from "../../firebase-config";
 
 const Header = ({ nav, header }) => {
   const handleLogOut = async () => {
@@ -10,15 +10,8 @@ const Header = ({ nav, header }) => {
     }
   };
   return (
-    <View style={styles.header}>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          paddingTop: 45,
-          alignItems: "center",
-        }}
-      >
+    <View style={styles.container}>
+      <View style={styles.header}>
         <Image
           style={styles["header__logo"]}
           source={require("../assets/images/kanalservis-logo.png")}
@@ -34,16 +27,14 @@ const Header = ({ nav, header }) => {
               source={require("../assets/images/logout-icon.png")}
             />
           </TouchableOpacity>
-        ) : (
-          ""
-        )}
+        ) : null}
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
+  container: {
     paddingLeft: 15,
     gap: 10,
     marginTop: 0,
@@ -51,6 +42,12 @@ const styles = StyleSheet.create({
     color: "#27569C",
     height: 100,
     fontFamily: "MerriweatherSans-BoldItalic",
+  },
+  header: {
+    display: "flex",
+    flexDirection: "row",
+    paddingTop: 45,
+    alignItems: "center",
   },
   header__logo: {
     width: 45,

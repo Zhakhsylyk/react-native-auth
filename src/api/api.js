@@ -9,7 +9,7 @@ let endpoints = [
 ];
 
 export const getContent = () => {
-  axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then(
+  return axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then(
     axios.spread((...response) => {
       return response;
     })
