@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import { Text, StyleSheet, Image, ScrollView } from "react-native";
 import React from "react";
 
 const Item = ({ name, body, title, company, thumbnailUrl }) => {

@@ -1,7 +1,6 @@
-import { View, Text, StyleSheet, ScrollView, Dimensions } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import Item from "./Item";
-import axios from "axios";
 import { getContent } from "../api/api";
 
 const ItemList = () => {
